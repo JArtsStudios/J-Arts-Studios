@@ -1,0 +1,393 @@
+
+html {
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #000;
+    
+}
+
+.language-selector {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+.language-selector button {
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 1em;
+}
+
+.language-selector button:hover {
+    background: #0056b3;
+}
+
+.fondo {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    opacity: .5;
+    z-index: -999;
+
+}
+
+.fondo img {
+    opacity: .4;
+}
+
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 999;
+
+
+}
+
+.overlay img {
+    opacity: 0;
+    scale: 2;
+    width: 50%;
+    height: 100%;
+    mix-blend-mode: d;
+
+}
+
+
+
+header {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    transform: translateY(19px);
+}
+
+.logo img {
+    max-width: 90px;
+    filter: contrast(0%)  brightness(300%) ;
+    transform: translateX(-599px);
+}
+
+
+nav a {
+    color: #ececec;
+    text-decoration: none;
+    transform: translateX(599px);
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 300;
+    padding: 15px 20px;
+    border-radius: 15px;
+    background: #22202173;
+    transition: .3s ease-in-out;
+    backdrop-filter: blur(5px);
+}
+
+
+nav a:hover {
+    background: #E66C4F;
+    color: #fff;
+    transform: translateX(590px);
+}
+
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.descripcion {
+    display: flex;
+    flex-direction: row;
+    gap: 255px;
+    color: #ececec;
+    transform: translateY(155px);
+}
+
+.descripcion h2 {
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 300;
+}
+
+
+
+
+.main h1 {
+    color: #ececec;
+    font-size: 25px;
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    scale: 8;
+    z-index: -5;
+    transform: translateY(25px);
+}
+
+.mano img {
+    max-width: 60px;
+    scale: 6;
+    transform: translateY(65px);
+    filter: drop-shadow(0px  0px 25px #f6be695b) brightness(105%);
+    animation: mano 3s ease-in-out infinite;
+    z-index: 9;
+
+}
+
+
+@keyframes mano {
+    0% {
+        transform: translateY(65px);
+    }
+
+    50% {
+        transform: translateY(60px);
+    }
+
+    100% {
+        transform: translateY(65px);
+    }
+}
+
+
+
+.botonscroll {
+    background: #ececec77;
+    padding: 10px 10px;
+    border-radius: 50px;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    transform: translateY(385px);
+
+}
+
+.botonscroll img {
+    max-width: 35px;
+
+}
+
+
+
+
+
+
+@keyframes show {
+    from {
+        transform: translateY(25px);
+    }
+
+    to{
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+.cuerpo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 600px;
+
+}
+
+
+.ipad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: mano 3s ease-in-out infinite;
+}
+
+
+.ipad h1 {
+    color: #ececec;
+    font-size: 20px;
+    font-family:  sans-serif;
+    font-weight: 900;
+    font-style: bold;
+    scale: 5;
+    view-timeline-name: --image;
+    view-timeline-axis: block ;
+    animation-timeline: --image;
+    animation-name: titulo;
+    animation-range: entry 25% cover 80%;
+    animation-fill-mode: both;
+}
+
+
+.ipad img {
+    max-width: 700px;
+    view-timeline-name: --image;
+    view-timeline-axis: block ;
+    animation-timeline: --image;
+    animation-name: ipad;
+    animation-range: entry 25% cover 50%;
+    animation-fill-mode: both;
+    z-index: 999;
+   
+}
+
+
+
+
+@keyframes ipad {
+    from {
+        transform: scale(1.5) perspective(1850px) rotateX(40deg) translateY(-156px);
+    }
+
+    to {
+        transform: scale(1) perspective(1850px) rotateX(0deg) translateY(0px);
+
+    
+
+    }
+}
+
+
+@keyframes titulo {
+    from {
+        transform: translateY(-25px);
+        color: #E66C4F;
+    }
+
+    to {
+        transform: translateY(3px);
+    }
+}
+
+
+.ipad p {
+    text-align: center;
+    color: #ececec;
+    font-size: 15px;
+    transform: translateX(0px) translateY(0px); 
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 300;
+    view-timeline-name: --image;
+    view-timeline-axis: block ;
+    animation-timeline: --image;
+    animation-name: pipad;
+    animation-range: entry 0% cover 50%;
+    animation-fill-mode: both;
+}
+
+
+@keyframes pipad {
+    from {
+        opacity: 0;
+        transform: translateX(0x) translateY(150px);
+    }
+
+    to {
+        transform: translateX(0px) translateY(0px);
+
+    }
+}
+
+
+
+
+.card-container {
+    display: flex;
+    gap: 20px;
+    transform: scale(0.9);
+    animation: scaleUp 0.5s forwards;
+    justify-content: center;
+    margin: 15% 0;
+}
+
+@keyframes scaleUp {
+    to {
+        transform: scale(1);
+    }
+}
+
+.card {
+    background: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+}
+
+.card i {
+    font-size: 3em;
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+.card h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.card .price {
+    font-size: 2em;
+    color: #bbb;
+    margin: 10px 0;
+}
+
+.card p {
+    color: #999;
+    margin: 5px 0;
+}
+
+.btn {
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+
+
+
