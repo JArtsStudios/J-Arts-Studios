@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="icon" href="img/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
@@ -13,10 +14,11 @@
 </head>
 <body>
 
+
     <div class="language-selector">
-        <button onclick="setLanguage('en')">English</button>
-        <button onclick="setLanguage('es')">Español</button>
-        <button onclick="setLanguage('jp')">日本語</button>
+        <!-- <button onclick="setLanguage('en')">En</button>
+        <button onclick="setLanguage('es')">Es</button> -->
+        <!-- <button onclick="setLanguage('jp')">日本語</button> -->
     </div>
 
     <div class="fondo">
@@ -28,93 +30,118 @@
             <div class="logo">
                 <img src="img/logo.png" alt="">
             </div>
-            <a href="#" data-lang="letsTalk">LET'S TALK</a>
+            <a href="lest-talk.html" data-lang="letsTalk">LET'S TALK</a>
         </nav>
 
         <div class="main">
             <div class="mano">
-                <img src="img/mano.png" alt="">
+                <img src="img/mano.webp" alt="">
             </div>
 
             <div class="descripcion">
-                <h2 data-lang="development">DEVELOPMENT</h2>
-                <h2 data-lang="experiences">EXPERIENCES</h2>
+                <h2 data-lang="development">DESAROLLANDO</h2>
+                <h2 data-lang="experiences">EXPERIENCIAS</h2>
             </div>
 
-            <h1>J.ARTS STUDIOS</h1>
+            <h1>J ARTS STUDIOS</h1>
 
-            <a href="#cuerpo" class="botonscroll">
-                <img src="img/icono 1.png" alt="Scroll down">
+            <a href="#Planes" class="botonscroll">
+               Planes <!-- <img src="img/icono 1.png" alt="Scroll down"> -->
             </a>
         </div>
     </header>
 
+
+
+
     <div class="cuerpo" id="cuerpo">
         <div class="ipad">
-            <h1 data-lang="support247">SUPPORT 24/7</h1>
+            <h1 data-lang="support247">SUPOTE 24/7</h1>
             <img src="img/ipad.png" alt="">
             <p data-lang="supportText">
-                At J.Arts Studios, we offer free support <br>
-                for the first two years to ensure your website runs smoothly. <br>
-                Our team is available to resolve any technical issues and <br>
-                perform necessary updates. We are committed to providing high <br>
-                quality service and guaranteed satisfaction.
+                En J.Arts Studios, ofrecemos soporte continuo para tu sitio web. <br>
+                Ya sea que tengas una consulta o enfrentes un problema, estamos <br> 
+                disponibles las 24 horas, los 7 días de la semana, para garantizar <br> 
+                que tu sitio funcione perfectamente. Confía en nosotros para un <br>
+                servicio rápido y eficiente.
             </p>
         </div>
     </div>
 
-    <div class="card-container">
+    <div class="contenedor-tarjetas">
+        <h1>Proyectos Recientes</h1>
+        <div class="tarjeta-contenedor">
+            <div class="tarjeta" id="tarjeta1">
+                <div class="tarjeta-contenido">
+                    <h2>Ebenezersrc.hn</h2>
+                    <p>Sitio Web Oficial de Ministerios Ebenezer Santa Rita Copan Honduras <br>
+                       Una Iglesia Bendecida Prosperada en victoria y Agradecida.
+                    </p>
+                </div>
+            </div>
+            <div class="tarjeta" id="tarjeta2">
+                <div class="tarjeta-contenido">
+                    <h2>Milasendahn.org</h2>
+                    <p>Sitio Web Oficial de Ministerio Internacional "La Senda" <br>
+                       LLlamando las cosas que no son como si fuesen.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+
+
+
+
+    <div class="card-container" id="Planes">
         <div class="card">
             <i class="fas fa-leaf"></i>
-            <h2 data-lang="basic">Basic</h2>
+            <h2 data-lang="basic">Basico</h2>
             <p class="price">$95</p>
-            <p data-lang="basicFeature1">Basic web design</p>
-            <p data-lang="basicFeature2">Responsive layout</p>
-            <p data-lang="basicFeature3">Email support</p>
-            <button class="btn" onclick="selectPlan('Basic', 95)" data-lang="choosePlan">Choose Plan</button>
+            <p data-lang="basicFeature1">Diseño Basico de Web</p>
+            <p data-lang="basicFeature2">Web Responsiva</p>
+            <p data-lang="basicFeature3">Soporte 24/7</p>
+            <p data-lang="basicFeature4">Hasta 7 Paginas</p>
+            <a class="btn" href="https://forms.gle/nYAwHXNfqeswpTRr6">Adquirir</a>
         </div>
         <div class="card">
             <i class="fas fa-seedling"></i>
-            <h2 data-lang="standard">Standard</h2>
-            <p class="price">$170</p>
-            <p data-lang="standardFeature1">Basic web design</p>
-            <p data-lang="standardFeature2">Responsive layout</p>
-            <p data-lang="standardFeature3">24/7 support</p>
-            <button class="btn" onclick="selectPlan('Standard', 170)" data-lang="choosePlan">Choose Plan</button>
+            <h2 data-lang="standard">Estandar</h2>
+            <p class="price">$199</p>
+            <p data-lang="basicFeature1">Diseño Personalizado</p>
+            <p data-lang="basicFeature2">Web Responsiva</p>
+            <p data-lang="basicFeature3">Soporte 24/7</p>
+            <p data-lang="basicFeature4">Hasta 15 Paginas</p>
+            <p data-lang="basicFeature5">Optimizacion de SEO Basica</p>
+            <a class="btn" href="https://forms.gle/nYAwHXNfqeswpTRr6">Adquirir</a>
         </div>
         <div class="card">
             <i class="fas fa-tree"></i>
             <h2 data-lang="premium">Premium</h2>
             <p class="price">$450</p>
-            <p data-lang="premiumFeature1">All features of Standard</p>
-            <p data-lang="premiumFeature2">Advanced SEO</p>
-            <p data-lang="premiumFeature3">Custom designs</p>
-            <button class="btn" onclick="selectPlan('Premium', 450)" data-lang="choosePlan">Choose Plan</button>
+            <p data-lang="basicFeature1">Diseño Personalizado</p>
+            <p data-lang="basicFeature2">Web Responsiva</p>
+            <p data-lang="basicFeature3">Soporte 24/7</p>
+            <p data-lang="basicFeature4">Hasta 25 Paginas</p>
+            <p data-lang="basicFeature5">Optimizacion de SEO Avanzada</p>
+            <p data-lang="basicFeature6">La Primeras Actualizacion Gratis</p>
+            <a class="btn" href="https://forms.gle/nYAwHXNfqeswpTRr6">Adquirir</a>
         </div>
         <div class="card">
             <i class="fas fa-gem"></i>
-            <h2 data-lang="ultimate">Ultimate</h2>
-            <p class="price">$1,250</p>
-            <p data-lang="ultimateFeature1">All features of Premium</p>
-            <p data-lang="ultimateFeature2">Priority support</p>
-            <p data-lang="ultimateFeature3">Free updates</p>
-            <button class="btn" onclick="selectPlan('Ultimate', 1250)" data-lang="choosePlan">Choose Plan</button>
+            <h2 data-lang="ultimate">Iglesias</h2>
+            <p class="price">25%</p>
+            <p data-lang="basicFeature1">25% De descuento en cualquier Plan</p>
+            <a class="btn" href="https://forms.gle/nSNJP8FD7bRH3Va18">Adquirir</a>
         </div>
     </div>
 
-    <h1 style="color: #fff;" data-lang="inspiration">A world of inspiration and magic, exploring with love for development</h1>
+  
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 J.Arts Studios. All Rights Reserved.</p>
-            <div class="social-icons">
-                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-        </div>
-    </footer>
 
     <script src="js/home.js"></script>
 

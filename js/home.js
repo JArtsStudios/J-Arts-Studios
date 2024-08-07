@@ -87,3 +87,50 @@ function setLanguage(lang) {
         element.innerHTML = translations[lang][element.getAttribute('data-lang')];
     });
 }
+
+
+
+document.querySelectorAll('.tarjeta').forEach(tarjeta => {
+    tarjeta.addEventListener('mousemove', (e) => {
+        const tarjetaRect = tarjeta.getBoundingClientRect();
+        const tarjetaCentroX = tarjetaRect.left + tarjetaRect.width / 2;
+        const tarjetaCentroY = tarjetaRect.top + tarjetaRect.height / 2;
+        const anguloX = (e.clientY - tarjetaCentroY) / 10;
+        const anguloY = (e.clientX - tarjetaCentroX) / -10;
+
+        tarjeta.style.transform = `rotateX(${anguloX}deg) rotateY(${anguloY}deg)`;
+    });
+
+    tarjeta.addEventListener('mouseleave', () => {
+        tarjeta.style.transform = 'rotateX(0) rotateY(0)';
+    });
+});
+
+
+
+
+
+
+const circle = document.getElementById('circle');
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+const updateCirclePosition = () => {
+    const currentX = parseFloat(circle.style.left) || mouseX;
+    const currentY = parseFloat(circle.style.top) || mouseY;
+
+    const dx = (mouseX - currentX) * 0.1;
+    const dy = (mouseY - currentY) * 0.1;
+
+    circle.style.left = (currentX + dx) + 'px';
+    circle.style.top = (currentY + dy) + 'px';
+
+    requestAnimationFrame(updateCirclePosition);
+};
+
+updateCirclePosition();

@@ -7,7 +7,18 @@ html {
 body {
     margin: 0;
     background: #000;
+    color: #F3F4F5;
+    font-family: Arial, Helvetica, sans-serif;
     
+}
+
+#circle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    pointer-events: none;
 }
 
 .language-selector {
@@ -72,7 +83,7 @@ body {
 header {
     display: flex;
     flex-direction: column;
-
+    z-index: 999;
     align-items: center;
 }
 
@@ -129,7 +140,7 @@ nav a:hover {
     flex-direction: row;
     gap: 255px;
     color: #ececec;
-    transform: translateY(155px);
+    transform: translateY(150px);
 }
 
 .descripcion h2 {
@@ -179,6 +190,8 @@ nav a:hover {
 
 
 .botonscroll {
+    text-decoration: none;
+    color: #000000;
     background: #ececec77;
     padding: 10px 10px;
     border-radius: 50px;
@@ -317,6 +330,126 @@ nav a:hover {
     }
 }
 
+.contenedor-tarjetas {
+    margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    h1{
+        font-size: 58px;
+        font-family:  sans-serif;
+        font-weight: 900;
+        font-style: bold;
+        view-timeline-name: --image;
+        view-timeline-axis: block ;
+        animation-timeline: --image;
+        animation-name: Tarjetas-scroll;
+        animation-range: entry 0% cover 50%;
+        animation-fill-mode: both;
+    }
+
+}
+
+.tarjeta-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    view-timeline-name: --image;
+    view-timeline-axis: block ;
+    animation-timeline: --image;
+    animation-name: Tarjetas-scroll;
+    animation-range: entry 0% cover 50%;
+    animation-fill-mode: both;
+}
+
+.tarjeta {
+    width: 700px;
+    height: 300px;
+    background: url(../img/Proyecto\ 2.png) ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    perspective: 1000px;
+    display: flex;
+    
+    align-items: end;
+}
+
+.tarjeta:last-child {
+    width: 700px;
+    height: 300px;
+    background: url(../img/Proyecto\ 1.png) ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+    perspective: 1000px;
+}
+
+.tarjeta:hover {
+    transform: rotateY(15deg) rotateX(15deg);
+    .tarjeta-contenido {
+        display: flex;
+        flex-direction: column;
+        background: #0000004b;
+        width: 100%;
+        padding: 20px;
+
+    }
+}
+
+.tarjeta-contenido {
+    display: none;
+    flex-direction: column;
+    background: #0000004b;
+    width: 100%;
+    padding: 20px;
+    animation: Tarjetas 1s ease-in-out both;
+
+}
+
+
+@keyframes Tarjetas {
+    from {
+        opacity: 0;
+        filter: blur(1px);
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes Tarjetas-scroll {
+    from {
+        scale: 0;
+        opacity: 0;
+        filter: blur(1px);
+    }
+    to {
+        scale: 1;
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+h2 {
+    margin: 0;
+}
+
+p {
+    margin-top: 10px;
+    color: #ffffffbe;
+}
 
 
 
@@ -373,6 +506,11 @@ nav a:hover {
 }
 
 .btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     background: #007BFF;
     color: #fff;
     border: none;
@@ -380,13 +518,20 @@ nav a:hover {
     cursor: pointer;
     border-radius: 5px;
     font-size: 1em;
-    margin-top: 10px;
+    margin-top: 15%;
     transition: background 0.3s;
 }
 
 .btn:hover {
     background: #0056b3;
 }
+
+
+
+
+
+
+
 
 
 
