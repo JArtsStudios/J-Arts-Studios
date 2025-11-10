@@ -1,0 +1,133 @@
+
+html {
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #000;
+    color: #F3F4F5;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+#circle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.language-selector {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+.language-selector button {
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 1em;
+}
+
+.language-selector button:hover {
+    background: #0056b3;
+}
+
+.fondo {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    opacity: .5;
+    z-index: -999;
+
+}
+
+.fondo img {
+    opacity: .4;
+}
+
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 999;
+
+
+}
+
+.overlay img {
+    opacity: 0;
+    scale: 2;
+    width: 50%;
+    height: 100%;
+    mix-blend-mode: d;
+
+}
+
+
+
+header {
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    align-items: center;
+}
+
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    transform: translateY(19px);
+    z-index: 999;
+}
+
+.logo img {
+    max-width: 90px;
+    filter: contrast(0%)  brightness(300%) ;
+    transform: translateX(-599px);
+    transition: .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+
+
+nav a {
+    color: #ececec;
+    text-decoration: none;
+    transform: translateX(599px);
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 300;
+    padding: 15px 20px;
+    border-radius: 50px;
+    background: #00000038;
+    transition: all .3s ease-in-out;
+    backdrop-filter: blur(2.5px) url(#filtroVidrioMascara) url(#chromatic-aberration) ;
+    box-shadow: inset 0 0 3px .5px #ffffff2d;
+    border-top: 1.5px  solid #ffffff73;
+}
+
+
+nav a:hover {
+    background: #e66d4f;
+    color: #fff;
+    transform: translateX(590px);
+}
+
+
