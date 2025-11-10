@@ -675,6 +675,22 @@ p {
     justify-content: center ;
     align-items: center;
     text-align: center;
+    padding: 0px 30px;
+    backdrop-filter: blur(2.5px) url(#filtroVidrioMascara) url(#chromatic-aberration) ;
+    box-shadow: inset 0 0 3px .5px #ffffff2d;
+    border-top: 1.5px  solid #ffffff73;
+    border-radius: 60px;
+}
+
+.games-card:last-child {
+       max-width: 600px;
+    height: 700px;
+    background: #00000017;
+    display: flex ;
+    flex-direction: column;
+    justify-content: center ;
+    align-items: center;
+    text-align: center;
     padding: 10px 0;
     backdrop-filter: blur(2.5px) url(#filtroVidrioMascara) url(#chromatic-aberration) ;
     box-shadow: inset 0 0 3px .5px #ffffff2d;
@@ -687,7 +703,7 @@ p {
     width: 550px;
     height: 350px;
     border-radius: 50px;
-    background: url(../img/game.webp);
+    background: url(../img/lantenrs.png);
     background-size: cover;
     background-position: center;
     opacity: 1;
@@ -721,7 +737,7 @@ p {
     width: 570px;
     height: 350px;
     border-radius: 50px;
-    background: url(../img/game2.jpg);
+    background: url(../img/deepsleep.png);
     background-size: cover;
     background-position: center;
     opacity: 1;
