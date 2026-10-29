@@ -1,97 +1,257 @@
-function selectPlan(plan, price) {
-    alert(`You have selected the ${plan} plan which costs $${price}`);
-}
+const cursor = document.querySelector('.cursor-custom');
+const cards = document.querySelectorAll('.card');
 
+let activeCard = null;
 
-
-  const imageElement = document.querySelector('.laptop-img');
-  const frames = [
-    '../img/Asus.png',
-    '../img/Asus2.png',
-    '../img/Asus3.png',
-    '../img/Asus4.png',
-    '../img/Asus5.png',
-    '../img/Asus6.png',
-    '../img/Asus7.png',
-    '../img/Asus8.png',
-    '../img/Asus9.png',
-    '../img/Asus10.png',
-    '../img/Asus11.png',
-    '../img/Asus12.png',
-    '../img/Asus13.png'
-  ];
-
-  let index = 0;
-  let hasPlayed = false; // Para evitar que se repita si ya se animó una vez
-
-  const animateFrames = () => {
-    if (index < frames.length) {
-      imageElement.src = frames[index];
-      index++;
-      setTimeout(animateFrames, 100); // Ajusta la velocidad
-    }
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !hasPlayed) {
-        animateFrames();
-        hasPlayed = true;
-      }
-    });
-  }, {
-    threshold: 0.6 // Empieza cuando el 50% de la imagen es visible
-  });
-
-  observer.observe(imageElement);
-
-
-
-document.querySelectorAll('.tarjeta').forEach(tarjeta => {
-    tarjeta.addEventListener('mousemove', (e) => {
-        const tarjetaRect = tarjeta.getBoundingClientRect();
-        const tarjetaCentroX = tarjetaRect.left + tarjetaRect.width / 2;
-        const tarjetaCentroY = tarjetaRect.top + tarjetaRect.height / 2;
-        const anguloX = (e.clientY - tarjetaCentroY) / 10;
-        const anguloY = (e.clientX - tarjetaCentroX) / -10;
-
-        tarjeta.style.transform = `rotateX(${anguloX}deg) rotateY(${anguloY}deg)`;
+cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        activeCard = card;
+        cursor.style.display = 'block';
+        cursor.classList.add('active');
     });
 
-    tarjeta.addEventListener('mouseleave', () => {
-        tarjeta.style.transform = 'rotateX(0) rotateY(0)';
+    card.addEventListener('mouseleave', () => {
+        activeCard = null;
+        cursor.style.display = 'none';
+        cursor.classList.remove('active');
     });
 });
 
+let mouseX = 0;
+let mouseY = 0;
 
+let posX = 0;
+let posY = 0;
 
-
-
-
-const circle = document.getElementById('circle');
-let mouseX = window.innerWidth / 2;
-let mouseY = window.innerHeight / 2;
+let lastX = 0;
 
 document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
 });
 
-const updateCirclePosition = () => {
-    const currentX = parseFloat(circle.style.left) || mouseX;
-    const currentY = parseFloat(circle.style.top) || mouseY;
+function animateCursor() {
 
-    const dx = (mouseX - currentX) * 0.1;
-    const dy = (mouseY - currentY) * 0.1;
+    // suavizado (inercia tipo gravedad)
+    posX += (mouseX - posX) * 0.18;
+    posY += (mouseY - posY) * 0.18;
 
-    circle.style.left = (currentX + dx) + 'px';
-    circle.style.top = (currentY + dy) + 'px';
+    // velocidad horizontal (para deformación)
+    const speedX = mouseX - lastX;
+    lastX = mouseX;
 
-    requestAnimationFrame(updateCirclePosition);
+    const stretch = Math.min(Math.abs(speedX) * 0.03, 0.6);
+
+    const scaleX = 1 + stretch;
+    const scaleY = 1 - stretch * 0.4;
+
+    cursor.style.left = posX + 'px';
+    cursor.style.top = posY + 'px';
+
+    if (!activeCard) {
+        cursor.style.transform =
+            `translate(-50%, -50%) scale(${scaleX}, ${scaleY})`;
+    } else {
+
+        const rect = activeCard.getBoundingClientRect();
+
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const angle =
+            Math.atan2(
+                mouseY - centerY,
+                mouseX - centerX
+            ) * 180 / Math.PI;
+
+        cursor.style.transform =
+            `translate(-50%, -50%)
+             rotate(${angle}deg)
+             scale(${scaleX * 1.2}, ${scaleY * 1.2})`;
+    }
+
+    requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const pill = document.querySelector('.cursor-pill');
+
+// URLs por ID
+const urls = {
+  lasendaweb: "https://milasendahn.org/",
+  ebenezersrcweb: "https://ebenezersrc.org/inicio/",
+  ebenezerzacapaweb: "https://ebenezerzacapa.org/",
+  rustide: "https://jartsstudio.itch.io/rustide-alpha"
 };
 
-updateCirclePosition();
+// mover capsula con el mouse
+document.addEventListener('mousemove', (e) => {
+  pill.style.left = e.clientX + 'px';
+  pill.style.top = e.clientY + 'px';
+});
+
+// aplicar eventos a cada ID
+Object.keys(urls).forEach(id => {
+  const el = document.getElementById(id);
+
+  if (!el) return;
+
+  el.style.cursor = "pointer";
+
+  el.addEventListener('mouseenter', () => {
+    pill.textContent = urls[id];
+    pill.style.opacity = 1;
+  });
+
+  el.addEventListener('mouseleave', () => {
+    pill.style.opacity = 0;
+  });
+
+  el.addEventListener('click', () => {
+    window.location.href = urls[id];
+  });
+});
 
 
+
+
+
+
+
+
+
+const dcards = document.querySelectorAll(".dcard");
+
+dcards.forEach(dcard => {
+
+    dcard.addEventListener("mousemove", (e) => {
+
+        const rect = dcard.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateY = ((x - centerX) / centerX) * 12;
+        const rotateX = ((centerY - y) / centerY) * 12;
+
+        dcard.style.transform = `
+            perspective(1000px)
+            rotateX(${rotateX}deg)
+            rotateY(${rotateY}deg)
+            scale(1.2)
+        `;
+    });
+
+    dcard.addEventListener("mouseleave", () => {
+        dcard.style.transform = `
+            perspective(1000px)
+            rotateX(0deg)
+            rotateY(0deg)
+            scale(1)
+        `;
+    });
+
+});
+
+
+
+
+
+
+
+
+
+(() => {
+  const bubble = document.querySelector(".cursor-bubble");
+
+  let mouseX = 0;
+  let mouseY = 0;
+
+  let posX = 0;
+  let posY = 0;
+
+  let lastX = 0;
+
+  let blocked = false;
+
+  // detectar si estás sobre zona bloqueada
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    const el = document.elementFromPoint(mouseX, mouseY);
+
+    blocked = !!el?.closest(".burbujacursor");
+
+    // invertir lógica: si estás en burbujacursor → ocultar
+    bubble.style.opacity = blocked ? "0" : "1";
+  });
+
+  function animate() {
+
+    if (!blocked) {
+
+      posX += (mouseX - posX) * 0.18;
+      posY += (mouseY - posY) * 0.18;
+
+      const speedX = mouseX - lastX;
+      lastX = mouseX;
+
+      const stretch = Math.min(Math.abs(speedX) * 0.03, 0.6);
+
+      const scaleX = 1 + stretch;
+      const scaleY = 1 - stretch * 0.5;
+
+      bubble.style.transform =
+        `translate(${posX}px, ${posY}px)
+         translate(-50%, -50%)
+         scale(${scaleX}, ${scaleY})`;
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+})();
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Seleccionar todos los botones de descarga
+    const downloadButtons = document.querySelectorAll('.btn-download');
+
+    downloadButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const productName = button.getAttribute('data-product');
+            const fileUrl = button.getAttribute('href');
+            
+            console.log(`Descarga iniciada para: ${productName} (${fileUrl})`);
+            
+            // Si el enlace sigue siendo '#' (aún no configurado), evitamos que recargue y avisamos
+            if (fileUrl === '#') {
+                event.preventDefault();
+                alert(`Configura la URL de descarga para ${productName} en el archivo HTML.`);
+            }
+            // Si tiene una ruta real (como './files/tu-plugin.zip'), el navegador lo descargará solo.
+        });
+    });
+});
 
 
